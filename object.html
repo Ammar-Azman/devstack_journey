@@ -76,7 +76,7 @@
 			db[id] = {}
 			db[id][prop] = val
 		} else if (prop === "weapons") {
-			db[id][prop] = db[id][prop] || [] // if not exist create empty list
+			db[id][prop] = db[id][prop] || [] // using pipe || if not exist create empty list, or if not exist return
 			db[id][prop].push(val)
 		} else {
 			db[id][prop] = val;
@@ -87,7 +87,4 @@
 	updateWeapons(dbCopy, "5", "name", "rust");
 	updateWeapons(dbCopy, "5", "weapons", "odin");
 	console.log(dbCopy)
-	
-	
-	
 </script>
