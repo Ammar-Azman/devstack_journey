@@ -1,0 +1,162 @@
+<script>
+	// -- Basic
+	console.log("Hello world")
+	
+	var number = 10; 
+	console.log(number)
+	
+	// comment
+	/*
+	comment
+	*/
+	
+	// -- Data type
+	var greet = "Hello world"; // whole program
+	let name = "This is let name"; // within scope (function)
+	const address = "Malaysia"; // can never be changed!
+	
+	// -- Variable
+	
+	var firstValue; // initialize but not defined variable
+	var secondValue = 2; 
+	console.log(firstValue)
+	
+	firstValue = secondValue; // after assign no need to declare var
+	console.log(firstValue)
+	
+	// # Interger 
+	// -- (Operator)
+	var sumValue = firstValue + secondValue; 
+	var subsValue = firstValue - secondValue;
+	var prodValue = firstValue * secondValue;
+	var divideValue = firstValue / secondValue;
+	var remainderValue = firstValue % secondValue;
+	console.log(sumValue);
+	console.log(subsValue); 
+	console.log(prodValue); 
+	console.log(divideValue); 
+	console.log(remainderValue); // to check num is odd or even
+	console.log(remainderValue); // to check num is odd or even
+	
+	// --- Increment
+	var posInc = 10; 
+	posInc = posInc + 1 // single incremental
+	posInc++; // alternative incremental
+	console.log("Positive incremental: ", posInc)
+	
+	var negInc = 20; 
+	negInc --; 
+	console.log("Negative incremental", negInc)
+	
+	// ---- Augmented incremental 
+	posInc += 10;
+	negInc -+ 10;
+	posInc *= 20;
+	posInc /= 20;
+	
+	// # String
+	// -- escape quotes
+	var escQuote = "He said \"yeahh!\""
+	var escQuote2 = 'He said "Yeahii"'
+	console.log(escQuote);
+	console.log(escQuote2);
+	
+	// -- more escape
+	var escQuote3 = "He said \n Newline";
+	console.log(escQuote3);
+	
+	// -- concatenate
+	var concatEsc = escQuote + " " +  escQuote2;
+	escQuote2 += " and " + escQuote2
+	console.log(concatEsc)
+	console.log(escQuote2)
+	
+	// -- str length
+	console.log("Length of string", escQuote2.length)
+	
+	// indexing
+	// start with 0
+	firstChar = greet[0];
+	console.log(firstChar);
+	
+	// -- immutability
+	// greet[0] = "P" // cannot be change
+	greet = "Hi";
+	console.log(greet); // mutable
+	
+	// -- testing function
+	function wordBlanks(Noun, Adjective, Verb, Adverb){
+	var result = ""; 
+	
+	result += "The " + " " + Noun + " " + Adjective + " " + Verb + " " +Adverb
+	return result		
+	}
+	
+	console.log(wordBlanks("dog", "big", "run", "quick"))
+	
+	// Array
+	var nameList = ["Jack", "Doe"]
+	var nameAge = [["Jack", 20], ["Lennie", 34]]
+	var firstName = nameList[0];
+	console.log(firstName)
+	console.log(nameAge[0])
+	console.log(nameAge[0][1])
+	
+	// --- manipulate array
+	nameList[1] = "Pyro"
+	console.log(nameList);
+	
+	// --- push() -- append on last array
+	nameList.push("Tim")
+	console.log(nameList);	
+	
+	// -- unshift -- append on first 
+	nameList.unshift("Ace")
+	console.log(nameList);
+	
+	// --- pop() -- remove last element
+	nameList.pop()
+	console.log(nameList);
+	
+	// --- shift() -- remove first element
+	nameList.shift()
+	console.log(nameList);
+	
+	// Function
+	function HelloWorld(){
+	console.log("Hello world!")	
+	}
+	HelloWorld()
+	HelloWorld()
+	
+	// --- with Argument
+	function GreetingPerson(greet, person) {
+		console.log(greet, "", person);	
+	}
+	GreetingPerson("Hello", "Rick")
+	GreetingPerson("Hi", "Smith")
+	
+	// --- Global scope
+	// --- calling function in another function
+	/* -- if the variable is not initialize with var, hence it will 
+	automatically declare as Global (in browser)
+	*/
+	
+	// --- Local scope
+	// cannot be access outside of the scope
+	function localScope() {
+		var localVar = 5
+	}
+	try	{
+		console.log(localVar)
+	}
+	catch {
+		console.log("Local var not declare")
+	}
+	
+	
+	
+	
+	
+
+</script>
