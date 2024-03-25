@@ -1,0 +1,93 @@
+<script>
+	/*
+	Object (hashmap/dict-like)
+	
+	object = {"property": "value"}
+	*/
+	
+	var info = {
+		"name": "jackie", 
+		"age" : 43, 
+		"address": "ohio"
+	}
+	
+	console.log(info.name)
+	console.log(info.age)
+	console.log(info["address"])
+	 
+	// -- update
+	info.name = "Sick"
+	console.log(info)
+	
+	// -- add property
+	info.friends = ["alpha", "pit"]
+	console.log(info)
+	
+	// -- delete property
+	delete info.friends
+	console.log(info)
+	
+	// has property
+	function checkProperty(info, toCheck) {
+		if (info.hasOwnProperty(toCheck)) {
+			return info[toCheck]
+		} else {
+			return toCheck + ": not found"
+		}	
+	}
+	checkProperty(info, "name")
+	console.log(checkProperty(info, "friends"))
+	
+	// -- complex object
+	
+	var AgentDatabase = {
+			"1" : {
+				"name": "shasha", 
+				"division": 3, 
+				"age": 44,
+				"weapons": ["rifle", "vandal"]
+			}, 
+			"2" : {
+				"name": "matt", 
+				"division": 2, 
+				"age": 21, 
+				"weapons": ["rifle"]
+			}, 
+			"3" : {
+				"name": "james", 
+				"division": 3, 
+				"age": 44, 
+				"weapons": ["sniper"]
+			}, 
+			"4" : {
+				"name": "haha", 
+				"division": 3, 
+				"age": 44, 
+				"weapons": ["machine gun"]
+			}
+		
+	}
+	var dbCopy = JSON.parse(JSON.stringify(AgentDatabase))
+	function updateWeapons(db, id, prop, val){
+		// if val is empty
+		if (val === "") {
+			delete db[id][prop]
+		} else if (!(db.hasOwnProperty(id))) { // if id not exist create one
+			db[id] = {}
+			db[id][prop] = val
+		} else if (prop === "weapons") {
+			db[id][prop] = db[id][prop] || [] // if not exist create empty list
+			db[id][prop].push(val)
+		} else {
+			db[id][prop] = val;
+		}
+		
+	}
+	updateWeapons(dbCopy, "4", "weapons", "phantom");
+	updateWeapons(dbCopy, "5", "name", "rust");
+	updateWeapons(dbCopy, "5", "weapons", "odin");
+	console.log(dbCopy)
+	
+	
+	
+</script>
