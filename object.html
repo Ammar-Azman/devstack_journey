@@ -3,6 +3,9 @@
 	Object (hashmap/dict-like)
 	
 	object = {"property": "value"}
+	
+	- property can be variable 
+	- property can be string
 	*/
 	
 	var info = {
@@ -87,4 +90,63 @@
 	updateWeapons(dbCopy, "5", "name", "rust");
 	updateWeapons(dbCopy, "5", "weapons", "odin");
 	console.log(dbCopy)
+	
+	// Use Destructuring assignment to Assign Variables from Objects
+	// destructuring -- pack-unpack-like
+	
+	// destructring Object
+	const myData = {name : "yop", age: 41, address: "louisiana" }
+	
+	const name = myData.name
+	const age = myData.age
+	const address = myData.address
+	
+	// assigning to variable
+	const { name : new_name, age: new_age, address : new_adress } = myData;
+	console.log(new_name);
+	console.log(new_age);
+	
+	function getName(information) {
+	"use strict"; 
+	
+	const {name: getTheName, age : getTheAge} = information;
+	return [getTheName, getTheAge];
+		
+	}
+	console.log(getName(myData))
+	
+	// desctructuring list
+	const [x, y, , a] = [1,2,3,4]
+	console.log(x, y, a)
+	
+	// swap value
+	let nine = 9, twenty = 20; 
+	[nine, twenty] = [twenty, nine]
+	
+	console.log("9", nine)
+	console.log("20", twenty)
+	
+	// rest opt with destructring
+	const numArr = [1,2,3,4,5]; 
+	[, , , ...arr] = numArr;
+	console.log(arr);
+	
+	// destucturing with function 
+	const NameAge = (function(){
+		return function NameAge({name, age}){
+			return [name, age];
+		};
+	})();
+	console.log(NameAge(myData));
+	
+	(function(text){
+		alert(text);
+	})('Hello there!');
+	
+	// create object without return {} form
+	const createPerson = (name, age, gender) => ({name, age, gender}); 
+	console.log(createPerson("Zachari", 41, "M"))
+	
+	
+	
 </script>

@@ -15,10 +15,10 @@
 	let name = "This is let name"; 
 	// -  within scope (function) - not allow declare the variable twice
 	// - ensure the scoping to be precise (var will make block scope as global)
-	const address = "Malaysia"; // can never be changed! -- no reassigned
+	const ADDRESS = "Malaysia"; // can never be changed! -- no reassigned -- usually capital
 	
 	try {
-		address = "Thailand"
+		ADDRESS = "Thailand"
 	}
 	catch (e) {
 		console.log("Error weh! ", e)	
@@ -82,6 +82,11 @@
 	
 	// -- str length
 	console.log("Length of string", escQuote2.length)
+	
+	// -- template literals (string format)
+	// -- using backtick and dollar
+	let HisName = "Jacko"
+	console.log(`My name is ${HisName}`)
 	
 	// indexing
 	// start with 0
@@ -352,6 +357,132 @@
 	console.log(checkVal(0))
 	
 	// use-strict
+	const MYARR = [4,6,9]
+	function editInPlace() {
+		"use strict"; 
+		try {
+			MYARR = [3,2,1]	
+		}
+		catch {
+			console.log("Mutability error")	
+		}
+		try {
+		MYARR[0] = 3; 
+		MYARR[1] = 2;
+		MYARR[2] = 1;
+		}
+		catch (ex){
+			console.log(ex)
+		}
+	}
+	editInPlace()
+	console.log(MYARR)
+	
+	// Object.freeze
+	// -- avoid the value within the object from alteration
+	function freezePI(){
+	"use strict";
+	const MATH_CONSTANT = {
+		PI : 3.14, // can decalare var in object?
+	}
+	Object.freeze(MATH_CONSTANT); 
+	
+	try {
+		MATH_CONSTANT.PI = 120; 	
+	}
+	catch (ex){
+		console.log(ex); 
+	}
+	}
+	freezePI();
+	
+	// Arrow Function - Anonymous Function
+	
+	// Anonymous Function
+	var magic = function() {
+		return new Date()	
+	}
+	
+	// Anonymous function ... Change to ... arrow function
+	// Arrow Function 
+	/* 
+	- Why?
+		- if function been used a single time
+		- write in-line function
+		- https://stackoverflow.com/questions/10273185/what-are-the-benefits-to-using-anonymous-functions-instead-of-named-functions-fo
+	- Q: 
+		- But why write anonymous function when in the end you assign a variable?
+	
+	- lambda-python like(?)
+	good case 
+		- a function that take function as argument
+	
+	*/
+	var magic = () => new Date(); // new Create new instance (invoking Class - like)
+	
+	// Example
+	// Anonymous function
+	var concatStr = function(firstStr, secondStr) {
+		return firstStr.concat(secondStr)
+	}
+	// Arrow function
+	var concatStr = (firstStr, secondStr) => firstStr.concat(secondStr)
+	console.log(concatStr("Hi", "Hello"))
+	
+	// default param
+	// weird way to write function (?)
+	const increment = (function(){
+		return function increment(number, value=1){
+			return number + value;		
+	}	
+	})();
+	console.log(increment(5,2));
+	console.log(increment(5));
+	
+	// Rest Operator
+	// *args
+	
+	const sum = (function() {
+		return function sum(x, y, z) {
+			const args = [x, y, z]
+			return args.reduce((a, b) => a + b, 0);
+		}	
+	})();
+	console.log(sum(1,2,3))
+	
+	// -- rest opt
+	const sum2 = (function() {
+		return function sum(...args) {
+			return args.reduce((a, b) => a + b, 0);
+		}	
+	})();
+	console.log(sum2(1,2,3, 4, 5, 6))
+	
+	// Spread Operator
+	const arr1 = ["JAN", "FEB", "MARCH"]
+	let arr12; 
+	
+	// --- the following is called IIFE (immediate invoke function expression)
+	(function() {
+		arr2 = [...arr1] // spread opt
+		arr1[1] = "potato"
+		
+	})();
+	console.log(arr2);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </script>

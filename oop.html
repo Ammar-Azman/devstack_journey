@@ -1,0 +1,102 @@
+<script>
+	// this (keyword)
+	// -- like self
+	
+	const person = {
+		firstName : "Matt", 
+		lastName : "Jackovic", 
+		fullName : function() {
+			return this.firstName + " " + this.lastName
+		}
+	};
+	console.log(person.fullName())
+	
+	// 1 -- class with function
+	var human = function(firstName, lastName) {
+		this.firstName = firstName; 
+		this.lastName = lastName; 
+		this.fullName = firstName + " " + lastName
+	}
+	var hero = new human("Todoroki", "Shota")
+	console.log(hero.fullName)
+	
+	// 2 -- class with class (with constructor)
+	class Project {
+		constructor(firstName, lastName){
+			this.firstName = firstName; 
+			this.lastName = lastName; 
+			this.fullName = firstName + " " + lastName
+		}	
+	}
+	var agent = new Project("Kyle", "Xy")
+	console.log(agent.fullName)
+	
+	// Setters and Getters
+	class Book {
+		constructor (authorName){
+			this._author = authorName
+		}	
+		// getter
+		get writer(){
+			return this._author;	
+		}
+		
+		// setter
+		set writer(updatedAuthor){
+			this._author = updatedAuthor
+		}
+	}	
+	var myBook = new Book("James Clark")
+	console.log(myBook.writer)
+	
+	
+	// State in class
+	class Car{
+		constructor(carName, carBattery, carMileage){
+			this._carName = carName
+			this._carBattery = carBattery
+			this._carMileage = carMileage
+		}
+		move(){
+			this._carBattery -= 10	
+			this._carMileage += 10
+		}
+	}
+	
+	var myCar = new Car("ferrari", 100, 0)
+	myCar.move()
+	console.log(`${myCar._carName} battery left: ${myCar._carBattery}`)
+	console.log(`${myCar._carName} mileage now: ${myCar._carMileage}`)
+	myCar.move()
+	console.log(`${myCar._carName} battery left: ${myCar._carBattery}`)
+	console.log(`${myCar._carName} mileage now: ${myCar._carMileage}`)
+	
+	export { Car }
+	
+	// Another pattern of instantiate Class
+	// wrapping class in function 
+	
+	function makeClass() {
+		class Motor{
+			constructor(motorName, motorBattery, motorMileage){
+				this._motorName = motorName
+				this._motorBattery = motorBattery
+				this._motorMileage = motorMileage
+			}
+			move(){
+				this._motorBattery -= 10	
+				this._motorMileage += 10
+			}
+		}
+		return Motor
+	}
+	const motor = makeClass();
+	const hisMotor = new motor("expai", 100, 0)
+	hisMotor.move()
+	console.log(`${hisMotor._motorName} battery left: ${hisMotor._motorBattery}`)
+	console.log(`${hisMotor._motorName} mileage now: ${hisMotor._motorMileage}`)
+	hisMotor.move()
+	console.log(`${hisMotor._motorName} battery left: ${hisMotor._motorBattery}`)
+	console.log(`${hisMotor._motorName} mileage now: ${hisMotor._motorMileage}`)
+	
+</script>
