@@ -12,8 +12,17 @@
 	
 	// -- Data type
 	var greet = "Hello world"; // whole program
-	let name = "This is let name"; // within scope (function)
-	const address = "Malaysia"; // can never be changed!
+	let name = "This is let name"; 
+	// -  within scope (function) - not allow declare the variable twice
+	// - ensure the scoping to be precise (var will make block scope as global)
+	const address = "Malaysia"; // can never be changed! -- no reassigned
+	
+	try {
+		address = "Thailand"
+	}
+	catch (e) {
+		console.log("Error weh! ", e)	
+	}
 	
 	// -- Variable
 	
@@ -300,5 +309,49 @@
 	skipNoCase(1);
 	skipNoCase(4);
 	
-
+	/*
+		- undefined - build in
+	*/
+	
+	// Random NumberBiggerThan
+	var RandomNum = Math.random()
+	var FloorRandom = Math.floor(RandomNum)
+	console.log(RandomNum)
+	console.log(FloorRandom)
+	
+	function RandomRandint(minVal, maxVal){
+		var get_random = Math.random() * (maxVal - minVal + 1);
+		var floor_output =Math.floor(get_random) + minVal;
+		return [get_random, floor_output]
+	}
+	console.log(RandomRandint(0,10))
+	console.log(RandomRandint(1,3))
+	
+	// ParseInt
+	// -- parse string into interger
+	
+	var stringInt = "2423"
+	var binaryStr = "10110"
+	console.log(parseInt(stringInt))
+	console.log(parseInt(binaryStr, 2))
+	
+	// Ternary Operator (?)
+	// conditional expression like
+	
+	function checkWithTernary(firstNum, secondNum) {
+		return firstNum === secondNum ? true :	false
+		// or return firstNum === secondNum
+	}
+	console.log(checkWithTernary(1,1))
+	
+	function checkVal(num) {
+		return num > 0 ? "pos" : num < 0 ? "neg" : "zero"
+	}
+	console.log(checkVal(10))
+	console.log(checkVal(-10))
+	console.log(checkVal(0))
+	
+	// use-strict
+	
+	
 </script>
