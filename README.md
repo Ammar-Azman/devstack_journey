@@ -1,4 +1,4 @@
-# learn_javascript
+# Starting Point
 - a journey of webdev stack
 - learning 
   - javascript 
