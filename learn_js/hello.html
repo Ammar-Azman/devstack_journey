@@ -1,0 +1,488 @@
+<script>
+	// -- Basic
+	console.log("Hello world")
+	
+	var number = 10; 
+	console.log(number)
+	
+	// comment
+	/*
+	comment
+	*/
+	
+	// -- Data type
+	var greet = "Hello world"; // whole program
+	let name = "This is let name"; 
+	// -  within scope (function) - not allow declare the variable twice
+	// - ensure the scoping to be precise (var will make block scope as global)
+	const ADDRESS = "Malaysia"; // can never be changed! -- no reassigned -- usually capital
+	
+	try {
+		ADDRESS = "Thailand"
+	}
+	catch (e) {
+		console.log("Error weh! ", e)	
+	}
+	
+	// -- Variable
+	
+	var firstValue; // initialize but not defined variable
+	var secondValue = 2; 
+	console.log(firstValue)
+	
+	firstValue = secondValue; // after assign no need to declare var
+	console.log(firstValue)
+	
+	// # Interger 
+	// -- (Operator)
+	var sumValue = firstValue + secondValue; 
+	var subsValue = firstValue - secondValue;
+	var prodValue = firstValue * secondValue;
+	var divideValue = firstValue / secondValue;
+	var remainderValue = firstValue % secondValue;
+	console.log(sumValue);
+	console.log(subsValue); 
+	console.log(prodValue); 
+	console.log(divideValue); 
+	console.log(remainderValue); // to check num is odd or even
+	console.log(remainderValue); // to check num is odd or even
+	
+	// --- Increment
+	var posInc = 10; 
+	posInc = posInc + 1 // single incremental
+	posInc++; // alternative incremental
+	console.log("Positive incremental: ", posInc)
+	
+	var negInc = 20; 
+	negInc --; 
+	console.log("Negative incremental", negInc)
+	
+	// ---- Augmented incremental 
+	posInc += 10;
+	negInc -+ 10;
+	posInc *= 20;
+	posInc /= 20;
+	
+	// # String
+	// -- escape quotes
+	var escQuote = "He said \"yeahh!\""
+	var escQuote2 = 'He said "Yeahii"'
+	console.log(escQuote);
+	console.log(escQuote2);
+	
+	// -- more escape
+	var escQuote3 = "He said \n Newline";
+	console.log(escQuote3);
+	
+	// -- concatenate
+	var concatEsc = escQuote + " " +  escQuote2;
+	escQuote2 += " and " + escQuote2
+	console.log(concatEsc)
+	console.log(escQuote2)
+	
+	// -- str length
+	console.log("Length of string", escQuote2.length)
+	
+	// -- template literals (string format)
+	// -- using backtick and dollar
+	let HisName = "Jacko"
+	console.log(`My name is ${HisName}`)
+	
+	// indexing
+	// start with 0
+	firstChar = greet[0];
+	console.log(firstChar);
+	
+	// -- immutability
+	// greet[0] = "P" // cannot be change
+	greet = "Hi";
+	console.log(greet); // mutable
+	
+	// -- testing function
+	function wordBlanks(Noun, Adjective, Verb, Adverb){
+	var result = ""; 
+	
+	result += "The " + " " + Noun + " " + Adjective + " " + Verb + " " +Adverb
+	return result		
+	}
+	
+	console.log(wordBlanks("dog", "big", "run", "quick"))
+	
+	// Array
+	var nameList = ["Jack", "Doe"]
+	var nameAge = [["Jack", 20], ["Lennie", 34]]
+	var firstName = nameList[0];
+	console.log(firstName)
+	console.log(nameAge[0])
+	console.log(nameAge[0][1])
+	
+	// --- manipulate array
+	nameList[1] = "Pyro"
+	console.log(nameList);
+	
+	// --- push() -- append on last array
+	nameList.push("Tim")
+	console.log(nameList);	
+	
+	// -- unshift -- append on first 
+	nameList.unshift("Ace")
+	console.log(nameList);
+	
+	// --- pop() -- remove last element
+	nameList.pop()
+	console.log(nameList);
+	
+	// --- shift() -- remove first element, return the first element
+	nameList.shift()
+	console.log(nameList);
+	
+	// Function
+	/*
+		Component
+			- function
+			- functionName
+			- args
+			- return
+			- whatFunctionWillDo
+	*/
+	function HelloWorld(){
+	console.log("Hello world!")	
+	}
+	HelloWorld()
+	HelloWorld()
+	
+	// --- with Argument
+	function GreetingPerson(greet, person) {
+		console.log(greet, "", person);	
+		return greet + " " + person;
+	}
+	GreetingPerson("Hello", "Rick")
+	GreetingPerson("Hi", "Smith")
+	
+	// --- Global scope
+	// --- calling function in another function
+	/* -- if the variable is not initialize with var, hence it will 
+	automatically declare as Global (in browser)
+	*/
+	
+	// --- Local scope
+	// cannot be access outside of the scope
+	function localScope() {
+		var localVar = 5
+	}
+	try	{
+		console.log(localVar)
+	}
+	catch {
+		console.log("Local var not declare")
+	}
+	
+	// --- saving value in variable
+	var greetInfo = GreetingPerson("Hola", "Puerto")
+	console.log(greetInfo);
+	
+	// --- use case testing
+	function nextInLine(arr, item) {
+		arr.push(item)
+		return item;
+	}
+	
+	var testArr = [1,2,3,4]
+	console.log("Before " + JSON.stringify(testArr));
+	
+	nextInLine(testArr, 6);
+	console.log(testArr)
+		
+	// Boolean
+	function NumberBiggerThan(value1, value2){
+		if (value1 > value2){
+			return true
+		} else if (value1 < value2) {
+			return false
+		} else {
+			console.log("Values are equal")	
+		}
+	}
+	console.log(NumberBiggerThan(10, 2))
+	console.log(NumberBiggerThan(2, 10))
+	
+	// Strict Equality Operator
+	/*
+		== --> do type conversion
+		=== ---> does not do type conversion
+	*/
+	function StrictTest(strictBoolean, testValue) {
+		if (strictBoolean) {
+			console.log("Strict mode")
+			if (testValue === 1) {
+				console.log("Equal to 1")
+			}
+			else {
+				console.log("false")
+			}
+		}
+		else {
+			console.log("Non strict mode")
+			if (testValue == '1') {
+				console.log("Equal to 1")
+			}
+			else {
+				return 'false'
+			}
+		}
+	}
+	StrictTest(true, 1); 
+	StrictTest(true, '1'); 
+	StrictTest(false, 1); 
+	StrictTest(false, '1'); 
+	
+	// -- Not equal 
+	/* 
+		!=
+		!== --> strict non equal - no conversion
+	*/
+	
+	/*
+		Other common operator
+		>, <
+		=>, <=
+	*/
+	
+	// Boolean operator
+	/*
+		&& -- And
+		|| -- Or
+	*/
+	
+	// Switch Statement
+	/*
+		- will continue if no case asign until found case
+		- after break, move to next case if any
+	*/
+	
+	function caseInSwitch(val) {
+	var answer = "";
+	switch (val) {
+		case 1: // --- strict equality if val === 1
+			answer = "alpha";
+			break;
+		case 2:
+			answer = "beta";
+			break;
+		case 3:
+			answer = "gamma";
+			break;
+		case 4:
+			answer = "delta";
+			break;
+	}
+	return answer
+	}
+	console.log(caseInSwitch(1))
+	console.log(caseInSwitch(2))
+	console.log(caseInSwitch(3))
+	
+	function connectTo(connector){
+		switch (connector) {
+			case "human":
+				return "Connecting to Human..."
+				break;
+			case "llm":
+				return "Connecting to LLM..."
+				break;
+		}	
+	}
+	console.log(connectTo("human"))
+	console.log(connectTo("llm"))
+	
+	function skipNoCase(val) {
+		
+	switch (val) {
+		case 1:
+		case 2:
+		case 3:
+			console.log("Less or equal than 3");
+			break;
+		case 4:
+		case 5:
+		case 6:
+			console.log("Less or equal than 6");
+			break;
+		
+	}
+	}
+	skipNoCase(1);
+	skipNoCase(4);
+	
+	/*
+		- undefined - build in
+	*/
+	
+	// Random NumberBiggerThan
+	var RandomNum = Math.random()
+	var FloorRandom = Math.floor(RandomNum)
+	console.log(RandomNum)
+	console.log(FloorRandom)
+	
+	function RandomRandint(minVal, maxVal){
+		var get_random = Math.random() * (maxVal - minVal + 1);
+		var floor_output =Math.floor(get_random) + minVal;
+		return [get_random, floor_output]
+	}
+	console.log(RandomRandint(0,10))
+	console.log(RandomRandint(1,3))
+	
+	// ParseInt
+	// -- parse string into interger
+	
+	var stringInt = "2423"
+	var binaryStr = "10110"
+	console.log(parseInt(stringInt))
+	console.log(parseInt(binaryStr, 2))
+	
+	// Ternary Operator (?)
+	// conditional expression like
+	
+	function checkWithTernary(firstNum, secondNum) {
+		return firstNum === secondNum ? true :	false
+		// or return firstNum === secondNum
+	}
+	console.log(checkWithTernary(1,1))
+	
+	function checkVal(num) {
+		return num > 0 ? "pos" : num < 0 ? "neg" : "zero"
+	}
+	console.log(checkVal(10))
+	console.log(checkVal(-10))
+	console.log(checkVal(0))
+	
+	// use-strict
+	const MYARR = [4,6,9]
+	function editInPlace() {
+		"use strict"; 
+		try {
+			MYARR = [3,2,1]	
+		}
+		catch {
+			console.log("Mutability error")	
+		}
+		try {
+		MYARR[0] = 3; 
+		MYARR[1] = 2;
+		MYARR[2] = 1;
+		}
+		catch (ex){
+			console.log(ex)
+		}
+	}
+	editInPlace()
+	console.log(MYARR)
+	
+	// Object.freeze
+	// -- avoid the value within the object from alteration
+	function freezePI(){
+	"use strict";
+	const MATH_CONSTANT = {
+		PI : 3.14, // can decalare var in object?
+	}
+	Object.freeze(MATH_CONSTANT); 
+	
+	try {
+		MATH_CONSTANT.PI = 120; 	
+	}
+	catch (ex){
+		console.log(ex); 
+	}
+	}
+	freezePI();
+	
+	// Arrow Function - Anonymous Function
+	
+	// Anonymous Function
+	var magic = function() {
+		return new Date()	
+	}
+	
+	// Anonymous function ... Change to ... arrow function
+	// Arrow Function 
+	/* 
+	- Why?
+		- if function been used a single time
+		- write in-line function
+		- https://stackoverflow.com/questions/10273185/what-are-the-benefits-to-using-anonymous-functions-instead-of-named-functions-fo
+	- Q: 
+		- But why write anonymous function when in the end you assign a variable?
+	
+	- lambda-python like(?)
+	good case 
+		- a function that take function as argument
+	
+	*/
+	var magic = () => new Date(); // new Create new instance (invoking Class - like)
+	
+	// Example
+	// Anonymous function
+	var concatStr = function(firstStr, secondStr) {
+		return firstStr.concat(secondStr)
+	}
+	// Arrow function
+	var concatStr = (firstStr, secondStr) => firstStr.concat(secondStr)
+	console.log(concatStr("Hi", "Hello"))
+	
+	// default param
+	// weird way to write function (?)
+	const increment = (function(){
+		return function increment(number, value=1){
+			return number + value;		
+	}	
+	})();
+	console.log(increment(5,2));
+	console.log(increment(5));
+	
+	// Rest Operator
+	// *args
+	
+	const sum = (function() {
+		return function sum(x, y, z) {
+			const args = [x, y, z]
+			return args.reduce((a, b) => a + b, 0);
+		}	
+	})();
+	console.log(sum(1,2,3))
+	
+	// -- rest opt
+	const sum2 = (function() {
+		return function sum(...args) {
+			return args.reduce((a, b) => a + b, 0);
+		}	
+	})();
+	console.log(sum2(1,2,3, 4, 5, 6))
+	
+	// Spread Operator
+	const arr1 = ["JAN", "FEB", "MARCH"]
+	let arr12; 
+	
+	// --- the following is called IIFE (immediate invoke function expression)
+	(function() {
+		arr2 = [...arr1] // spread opt
+		arr1[1] = "potato"
+		
+	})();
+	console.log(arr2);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
